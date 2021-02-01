@@ -20,54 +20,47 @@ In order to transpose the code into other environments, a modular impplementatio
 
 ## Hyperparameters Calibration
 
-A simple hyperparameter optimization has been performed, a grid search on the learning rate for the three neural networks. With the current code, is is easy to perform an optimization on oother hyperparameters if necessary.
+A simple hyperparameter optimization has been performed, a grid search on the learning rate for the three neural networks. With the current code, is is easy to perform an optimization on other hyperparameters if necessary.
 
 
 ## Data Structure
 
 ```text
-                                 The environment will provide
-+------------------------+       a new state and a new reward     +-------------------------------------------------------------+
-|       Environment      |       at each new step                 |                           TD3 Agent                         |
-+------------------------+                                        +-------------------------------------------------------------+
-|                        +--------------------------------------->+ +---------------------------------------------------------+ |
-|                        |                                        | |            Actor            |           Critic          | |
-|                        +<---------------------------------------+ +-----------------------------+---------------------------+ |
-+------------------------+       The actor will choose an action  |                                                             |
-                                 with respect to the state        |                                                             |
-                                                                  +-----------------------+------------+------------------------+
-                                                                                          |            |
-                            +                                  +                          |            |
-                            |                                  |                          |            |
-                            +----------------------------------+                          |            |
-                                 If necessary, the                                        |            |
-                                 communication with the                                   |            |
-                                 environment will require                                 |            |
-                                 to convert in PyTorch tensors                            |            |
-                                 the informations at each step,      The agent will store |            |  The agent will ask for
-                                 and vice versa                      new experiences in   |            |  past experiences in
-                                                                     the memory when      |            |  order to learn
-                                                                     tackling a step      |            |
-                                                                                          |            |
-                                                                     (PyTorch tensors)    |            |  (PyTorch tensors)
-                                                                                          |            |
-                                                                                          |            |
-                                                                                          |            |
-                                                                  +-----------------------+------------+-------------------------+
-                                                                  |                            Memory                            |
-                                                                  +--------------------------------------------------------------+
-                                                                  |                                                              |
-                                                                  |                                                              |
-                                                                  +--------------------------------------------------------------+
+                    The environment will provide
++-------------+     a new state and a new reward       +---------------------------------------------+
+| Environment |     at each new step                   |                TD3 Agent                    |
++-------------+                                        +---------------------------------------------+
+|             +----------------------------------------> +-----------------------------------------+ |
+|             |                                        | |      Actor       |        Critic        | |
+|             <----------------------------------------+ +------------------+----------------------+ |
++-------------+     The actor will choose an action    |                                             |
+                    with respect to the state          |                                             |
+                                                       +------------------+--^-----------------------+
+                                                                          |  |
+               +                                  +   The agent will store|  |
+               |                                  |   new experiences in  |  | The agent will ask for
+               +----------------------------------+   the memory when     |  | past experiences in
+                    If necessary, the                 tackling a step     |  | order to learn
+                    communication with the                                |  |
+                    environment will require          (PyTorch tensors)   |  |
+                    to convert in PyTorch tensors                         |  | (PyTorch tensors)
+                    the informations at each step,                        |  |
+                    and vice versa                    +-------------------v--+----------------------+
+                                                      |                  Memory                     |
+                                                      +---------------------------------------------+
+                                                      |                                             |
+                                                      |                                             |
+                                                      +---------------------------------------------+
 
-                                                                               The memory only interact with the agent
-                                                                               the experience will be stored as PyTorch
-                                                                               tensors                                                                                           
+                                                          The memory only interact with the agent
+                                                          the experience will be stored as PyTorch
+                                                          tensors
+                        
 ```
 
 ## Results
 
-The current optimal agent has a mean score over 100 episode oscillating in general between 150 and 170.
+The current optimal agent has a mean score over 100 episode oscillating in general between -150 and -170.
 
 
 ## Future Work 
