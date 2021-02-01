@@ -20,7 +20,7 @@ In order to transpose the code into other environments, a modular impplementatio
 
 ## Hyperparameters Calibration
 
-A simple hyperparameter optimization has been performed, a grid search on the learning rate for the three neural networks. With the current code, is is easy to perform an optimization on other hyperparameters if necessary.
+A simple hyperparameter optimization has been performed, a grid search on the learning rate for the three neural networks. With the current code, it is easy to perform an optimization on other hyperparameters if necessary.
 
 
 ## Data Structure
