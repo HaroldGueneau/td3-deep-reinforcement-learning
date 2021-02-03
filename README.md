@@ -67,7 +67,7 @@ The current optimal agent has a mean score over 100 episode oscillating in gener
 
 It seems that some of the hyperparameters have a huge influence on the convergence speed.
 It would be suitable in the future to explore further hyperparameters optimization methods, such bayesian optimisation.
-However, this is very challenging since the high dimension of the hyperparameters space (Agent's hyperparameters + 3 Neural Networks ones).
+However, this is very challenging due to the high dimension of the hyperparameters space (Agent's hyperparameters + 3 Neural Networks ones).
 A rigorous hyperparameters optimization would require a lot of computing power.
 
 Another possible path is to implement a Prioritized Experience Replay in order to accelerate the convergence by choosing the right sample during the training process.
