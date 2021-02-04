@@ -1,6 +1,9 @@
+from utils.activation import Activation
+
+
 class MultiLayersPerceptronConfigurator:
     
-    def __init__(self, input_size: int, output_size: int, hidden_layers: list, learning_rate: float, hidden_activation: str, activation_output: str):
+    def __init__(self, input_size: int, output_size: int, hidden_layers: list, learning_rate: float, hidden_activation: Activation, activation_output: Activation):
         self.input_size = input_size
         self.output_size = output_size
         self.hidden_layers = hidden_layers
@@ -45,13 +48,9 @@ class MultiLayersPerceptronConfigurator:
             raise ValueError("The learning_rate must be in [0.0, 1.0]")
             
     def __check_hidden_activation(self):
-        if not isinstance(self.hidden_activation, str):
-            raise TypeError("The hidden_activation must be a string")
-        if not self.hidden_activation in ['relu', 'leaky_relu', 'elu']:
-            raise ValueError("The hidden_activation must be in ['relu', 'leaky_relu', 'elu']")
+        if not isinstance(self.hidden_activation, Activation):
+            raise TypeError("The hidden_activation must be an Activation Enum")
         
     def __check_activation_output(self):
-        if not isinstance(self.activation_output, str):
-            raise TypeError("The activation_output must be a string")
-        if not self.activation_output in ['linear', 'tanh', 'sigmoid']:
-            raise ValueError("The hidden_activation must be in ['linear', 'tanh', 'sigmoid']")
+        if not isinstance(self.activation_output, Activation):
+            raise TypeError("The activation_output must be an Activation Enum")

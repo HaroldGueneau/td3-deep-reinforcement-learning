@@ -7,6 +7,7 @@ from agent.td3_agent import AgentTD3
 from agent.agent_trainer import AgentTrainer
 from configurator.multi_layers_perceptron_configurator import MultiLayersPerceptronConfigurator
 from configurator.agent_configurator import AgentConfigurator
+from utils.activation import Activation
 
 
 class GridCalibrator:
@@ -44,8 +45,8 @@ class GridCalibrator:
                                                         output_size = action_size, 
                                                         hidden_layers = [64, 128, 64],
                                                         learning_rate = hyperparameters['actor_learning_rate'], 
-                                                        hidden_activation = 'elu', 
-                                                        activation_output = 'tanh'
+                                                        hidden_activation = Activation.elu, 
+                                                        activation_output = Activation.tanh
                                                         )
 
         critic_1_config = MultiLayersPerceptronConfigurator(
@@ -53,8 +54,8 @@ class GridCalibrator:
                                                             output_size = 1, 
                                                             hidden_layers = [64, 128, 64],
                                                             learning_rate = hyperparameters['critic_1_learning_rate'], 
-                                                            hidden_activation = 'elu', 
-                                                            activation_output = 'linear'
+                                                            hidden_activation = Activation.elu,
+                                                            activation_output = Activation.tanh
                                                             )
 
         critic_2_config = MultiLayersPerceptronConfigurator(
@@ -62,8 +63,8 @@ class GridCalibrator:
                                                             output_size = 1, 
                                                             hidden_layers = [64, 128, 64], 
                                                             learning_rate = hyperparameters['critic_2_learning_rate'], 
-                                                            hidden_activation = 'elu', 
-                                                            activation_output = 'linear'
+                                                            hidden_activation = Activation.elu,
+                                                            activation_output = Activation.tanh
                                                             )
 
         agent_config = AgentConfigurator(
