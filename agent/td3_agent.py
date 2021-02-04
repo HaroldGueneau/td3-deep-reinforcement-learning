@@ -7,6 +7,7 @@ from utils.multi_layers_perceptron import MultiLayerPerceptron
 from agent.vanilla_memory import VanillaMemory
 from configurator.multi_layers_perceptron_configurator import MultiLayersPerceptronConfigurator
 from configurator.agent_configurator import AgentConfigurator
+from utils.activation import Activation
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -70,11 +71,11 @@ class AgentTD3():
         return action
 
     def __resquale_action(self, action):
-        if self.activation_output_actor == 'tanh':
+        if self.activation_output_actor == Activation.tanh:
             actual_min = -1
             actual_max = 1
         else:
-            raise ValueError("The allowed activations for the actor are: ['tanh']")
+            raise ValueError("The allowed activations for the actor are: Activation.tanh")
         action = (action - actual_min) / (actual_max - actual_min)
         action = action * (self.agent_config.action_max - self.agent_config.action_min) + self.agent_config.action_min
         return action

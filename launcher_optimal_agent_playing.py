@@ -8,6 +8,8 @@ from configurator.agent_configurator import AgentConfigurator
 from agent.td3_agent import AgentTD3
 from agent.td3_agent_loader import AgentTD3Loader
 from utils.preprocessor import Preprocessor
+from utils.activation import Activation
+
 
 NB_EPISODE = 100
 
@@ -24,8 +26,8 @@ actor_config = MultiLayersPerceptronConfigurator(
                 output_size = action_size, 
                 hidden_layers = [64, 128, 64], 
                 learning_rate = 1e-3, 
-                hidden_activation = 'elu', 
-                activation_output = 'tanh'
+                hidden_activation = Activation.elu,
+                activation_output = Activation.tanh
                 )
 
 critic_1_config = MultiLayersPerceptronConfigurator(
@@ -33,8 +35,8 @@ critic_1_config = MultiLayersPerceptronConfigurator(
                     output_size = 1, 
                     hidden_layers = [64, 128, 64], 
                     learning_rate = 1e-2, 
-                    hidden_activation = 'elu', 
-                    activation_output = 'linear'
+                    hidden_activation = Activation.elu,
+                    activation_output = Activation.linear
                     )
 
 critic_2_config = MultiLayersPerceptronConfigurator(
@@ -42,8 +44,8 @@ critic_2_config = MultiLayersPerceptronConfigurator(
                     output_size = 1, 
                     hidden_layers = [64, 128, 64], 
                     learning_rate = 1e-2, 
-                    hidden_activation = 'elu', 
-                    activation_output = 'linear'
+                    hidden_activation = Activation.elu,
+                    activation_output = Activation.linear
                     )
 
 agent_config = AgentConfigurator(
@@ -79,4 +81,3 @@ for i_episode in range(1, NB_EPISODE+1):
     ma_score.append(score_episode)
     scores.append(score_episode)
     print('\rEpisode {}\tAverage Score over the last {} episodes: {:.2f}, Last score: {}'.format(i_episode, 100, np.mean(ma_score), score_episode))
-
