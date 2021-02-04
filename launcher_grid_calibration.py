@@ -11,7 +11,7 @@ possibilities = {
 
 env = gym.make('Pendulum-v0')
 
-grid_calibrator = GridCalibrator(env, nb_iterations=1, nb_episodes=1, nb_time_steps=200, moving_average_period=50, possibilities=possibilities)
+grid_calibrator = GridCalibrator(env, nb_iterations=3, nb_episodes=100, nb_time_steps=200, moving_average_period=50, possibilities=possibilities)
 grid = grid_calibrator.calibrate_agent()
 print(grid)
 grid.to_csv('output/calibration_result.csv')
