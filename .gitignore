@@ -128,5 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-output/.csv
-output/.pth
+output/*.csv
+output/*.pth
