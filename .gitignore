@@ -129,5 +129,4 @@ dmypy.json
 .pyre/
 
 # output folder
-output/*.pth
-output/*.csv
+output/*
