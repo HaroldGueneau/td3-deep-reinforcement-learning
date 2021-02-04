@@ -162,4 +162,5 @@ class AgentTD3():
     def __minimize_actor_loss(self, actor_loss):
         self.actor_optimizer.zero_grad()
         actor_loss.backward()
+        torch.nn.utils.clip_grad_norm_(self.actor_local.parameters(), 1)
         self.actor_optimizer.step()
