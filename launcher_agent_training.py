@@ -27,7 +27,7 @@ critic_1_config = MultiLayersPerceptronConfigurator(
                     input_size = state_size + action_size,
                     output_size = 1, 
                     hidden_layers = [64, 128, 64], 
-                    learning_rate = 5e-3, 
+                    learning_rate = 1e-2, 
                     hidden_activation = Activation.elu,
                     activation_output = Activation.linear
                     )
@@ -36,7 +36,7 @@ critic_2_config = MultiLayersPerceptronConfigurator(
                     input_size = state_size + action_size,
                     output_size = 1, 
                     hidden_layers = [64, 128, 64], 
-                    learning_rate = 5e-3, 
+                    learning_rate = 1e-2, 
                     hidden_activation = Activation.elu,
                     activation_output = Activation.linear
                     )
