@@ -15,7 +15,7 @@ Please find theoretical informations about the TD3 model in the td3.pdf file.
 ## Environment
 
 The chosen environment is the [Gym 'Pendulum-v0'](https://github.com/openai/gym/wiki/Pendulum-v0), a simple one where the agent has to swing up an inverted pendulum.
-In order to transpose the code into other environments, a modular impplementation has been proposed. The main point to manage in order to do it is the Preprocessor class, and to adjust the hyperparameters.
+In order to transpose the code into other environments, a modular implementation has been proposed. The main point to manage in order to do it is the Preprocessor class, and to adjust the hyperparameters.
 
 
 ## Hyperparameters Calibration
