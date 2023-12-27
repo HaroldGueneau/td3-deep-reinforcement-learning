@@ -131,3 +131,6 @@ dmypy.json
 # Output folder
 output/*.csv
 output/*.pth
+
+# Jetbrains IDE
+.idea

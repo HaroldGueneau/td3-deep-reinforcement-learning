@@ -1,0 +1,9 @@
+FROM python:3.8-slim
+
+WORKDIR /usr/src/app
+
+COPY . /usr/src/app
+
+RUN pip install -r requirements.txt
+
+ENTRYPOINT ["python", "launcher_optimal_agent_playing.py"]
